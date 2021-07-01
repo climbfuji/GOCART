@@ -8263,7 +8263,7 @@ loop2: DO l = 1,nspecies_HL
 !   Dr. Francis S. Binkowski modified the routine on 6/24/91, 8/7/97
 ! ***
 ! *** modified 2/23/98 by fsb to incorporate Dr. Ingmar Ackermann's
-!     recommendations for setting a0, a1,a2 as real(kind=kind_chem) variables.
+!     recommendations for setting a0, a1,a2 as real*8 variables.
 !
 ! Modified by Bob Yantosca (10/15/02) 
 ! - Now use upper case / white space
@@ -8424,7 +8424,7 @@ loop2: DO l = 1,nspecies_HL
 !   F.Binkowski 8/7/97    Modified coefficients BETA0, BETA1, CGAMA
 !   R.Yantosca  9/25/02   Ported into "rpmares_mod.f" for GEOS-CHEM.  Cleaned
 !                         up comments, etc.  Also force double precision by
-!                         declaring REALs as real(kind=kind_chem) and by using "D" exponents.
+!                         declaring REALs as REAL*8 and by using "D" exponents.
 !******************************************************************************
       ! Error codes
 
