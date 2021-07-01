@@ -10,19 +10,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Updated `CODEOWNERS` to reflect changes in staffing
-- Updated `components.yaml` for latest MAPL
+- Updated `components.yaml`
+  - Added fixture block
+  - Added ESMA_env 3.2.1
+  - Updated ESMA_cmake to 3.4.0
+  - Updated GMAO_Shared to 1.4.0
+  - Updated MAPL to v2.6.7
+- Updated CircleCI to use `large` resource
+- Rename BUILD_UFS CMake flag as UFS_GOCART
+- Rename UFS target as UFS_Aerosols
+- Add CMake macros replacing ecBuild and ESMA_cmake for the UFS
+- Relax PFLOGGER dependency requirement outside Baselibs
+- Refactored UFS Aerosols: introduced dynamic tracer mapping and limited unit conversion
 
 ### Fixed
 
 - Fixes to CMake to build with UFS and with no Baselibs
 - Fixed return code handling
 - Fixed uninitialized rc in Cubic in process library
+- Fixed build issue with GNU 9.2.0
 
 ### Removed
 
 ### Added
 
 - Compute and export PM2.5 and PM10 diagnostic tracers in UFS interface
+- Add NOAA/ARL FENGSHA dust scheme
 
 ## [1.0.1] - 2021-03-22
 
