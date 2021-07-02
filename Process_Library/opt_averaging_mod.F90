@@ -803,21 +803,21 @@
 ! * sect02 expects input in um
 ! * pass in generic mass of 1.0 just to get a percentage distribution of mass among bins
 !
-!!      ss1=alog(sginin)
+!!      ss1=log(sginin)
 !!      ss2=exp(ss1*ss1*36.0/8.0) 
 !!      ss3=(sixpi*vol_ai/(num_ai*ss2))**0.3333333
 !!      dgnum_um=amax1(dgmin,ss3)*1.0e+04
         dgnum_um=dginin*1.E6
         call sect02(dgnum_um,sginin,drydens,iflag,duma,nbin_o,dlo_um,dhi_um, &
           xnum_secti,xmas_secti)
-!!      ss1=alog(sginia)
+!!      ss1=log(sginia)
 !!      ss2=exp(ss1*ss1*36.0/8.0) 
 !!      ss3=(sixpi*vol_aj/(num_aj*ss2))**0.3333333
 !!      dgnum_um=amax1(dgmin,ss3)*1.0e+04
         dgnum_um=dginia*1.E6
         call sect02(dgnum_um,sginia,drydens,iflag,duma,nbin_o,dlo_um,dhi_um, &
           xnum_sectj,xmas_sectj)
-!!      ss1=alog(sginic)
+!!      ss1=log(sginic)
 !!      ss2=exp(ss1*ss1*36.0/8.0) 
 !!      ss3=(sixpi*vol_ac/(num_ac*ss2))**0.3333333
         dgnum_um=dginic*1.E6
@@ -1545,19 +1545,19 @@ COMPLEX, DIMENSION( its:ite, kts:kte, jts:jte,1:nbin_o,nswbands),      &
 ! * pass in generic mass of 1.0 just to get a percentage distribution of mass
 ! among bins
 !
-        ss1=alog(sginin)
+        ss1=log(sginin)
         ss2=exp(ss1*ss1*36.0/8.0)
         ss3=(sixpi*vol_ai/(num_ai*ss2))**0.3333333
         dgnum_um=amax1(dgmin,ss3)*1.0e+04
         call sect02(dgnum_um,sginin,drydens,iflag,duma,nbin_o,dlo_um,dhi_um, &
           xnum_secti,xmas_secti)
-        ss1=alog(sginia)
+        ss1=log(sginia)
         ss2=exp(ss1*ss1*36.0/8.0)
         ss3=(sixpi*vol_aj/(num_aj*ss2))**0.3333333
         dgnum_um=amax1(dgmin,ss3)*1.0e+04
         call sect02(dgnum_um,sginia,drydens,iflag,duma,nbin_o,dlo_um,dhi_um, &
           xnum_sectj,xmas_sectj)
-        ss1=alog(sginic)
+        ss1=log(sginic)
         ss2=exp(ss1*ss1*36.0/8.0)
         ss3=(sixpi*vol_ac/(num_ac*ss2))**0.3333333
         dgnum_um=amax1(dgmin,ss3)*1.0e+04
@@ -2017,8 +2017,8 @@ END subroutine optical_prep_modal_soa_vbs
             nrefi=1
          endif
 
-         bma=0.5*alog(rmax/rmin) ! JCB
-         bpa=0.5*alog(rmax*rmin) ! JCB
+         bma=0.5*log(rmax/rmin) ! JCB
+         bpa=0.5*log(rmax*rmin) ! JCB
 
            do 120 nr=1,nrefr
            do 120 ni=1,nrefi
@@ -2124,8 +2124,8 @@ END subroutine optical_prep_modal_soa_vbs
             nrefi=1
          endif
 
-         bma=0.5*alog(rmax/rmin) ! JCB
-         bpa=0.5*alog(rmax*rmin) ! JCB
+         bma=0.5*log(rmax/rmin) ! JCB
+         bpa=0.5*log(rmax*rmin) ! JCB
 
            do 121 nr=1,nrefr
            do 121 ni=1,nrefi
@@ -2170,8 +2170,8 @@ END subroutine optical_prep_modal_soa_vbs
       endif !ini_fit 
 
 
-         xrmin=alog(rmin)
-         xrmax=alog(rmax)
+         xrmin=log(rmin)
+         xrmax=log(rmax)
 
 !######################################################################
 !parameterization of mie calculation for shortwave 
@@ -2232,7 +2232,7 @@ END subroutine optical_prep_modal_soa_vbs
                 endif
           !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
-                x=alog(radius_wet_col(m,klevel)) ! radius in cm
+                x=log(radius_wet_col(m,klevel)) ! radius in cm
                 crefin=swrefindx_col(m,klevel,ns)
                 refr=real(crefin)
                 refi=-Aimag(crefin)
@@ -2501,7 +2501,7 @@ END subroutine optical_prep_modal_soa_vbs
                do m=1,nbin_a ! nbin_a is number of bins
 ! here's the size
                 sizem=radius_wet_col(m,klevel) ! radius in cm
-                x=alog(radius_wet_col(m,klevel)) ! radius in cm
+                x=log(radius_wet_col(m,klevel)) ! radius in cm
                 crefin=lwrefindx_col(m,klevel,ns)
                 refr=real(crefin)
                 refi=-Aimag(crefin)
@@ -2613,12 +2613,12 @@ END subroutine optical_prep_modal_soa_vbs
 
       do 100 m=1,maxm
       if (rs(m).ge.0.)then
-      x(m)=alog(rs(m))
+      x(m)=log(rs(m))
       else
       x (m)=1.2-10
       endif
       if (yin(m).ge.0.)then
-      y(m)=alog(yin(m))
+      y(m)=log(yin(m))
       else
       y(m)=1.e-10
       endif
@@ -2655,8 +2655,8 @@ END subroutine optical_prep_modal_soa_vbs
       character*80 msg
            
       do 100 m=1,maxm
-      x(m)=alog(rs(m))
-      y(m)=yin(m) ! note, no "alog" here
+      x(m)=log(rs(m))
+      y(m)=yin(m) ! note, no "log" here
   100 continue
 
       xmin=x(1)
@@ -4405,8 +4405,8 @@ END subroutine optical_prep_modal_soa_vbs
         end if
 !   compute total volume and number for mode
 !       dgnum = dgnum_um*1.0e-4
-!       sx = alog( sigmag )
-!       x0 = alog( dgnum )
+!       sx = log( sigmag )
+!       x0 = log( dgnum )
 !       x3 = x0 + 3.*sx*sx
 !       dstar = dgnum * exp(1.5*sx*sx)
 !       if (iflag .le. 1) then
@@ -4428,8 +4428,8 @@ END subroutine optical_prep_modal_soa_vbs
         end do
 !   compute modal "working" parameters including total num/vol/mass
         dgnum = dgnum_um*1.0e-4
-        sx = alog( sigmag )
-        x0 = alog( dgnum )
+        sx = log( sigmag )
+        x0 = log( dgnum )
         x3 = x0 + 3.*sx*sx
         dstar = dgnum * exp(1.5*sx*sx)
         if (iflag .le. 1) then
@@ -4444,8 +4444,8 @@ END subroutine optical_prep_modal_soa_vbs
         sumnum = 0.
         summas = 0.
         do n = 1, nbin
-            xlo = alog( dlo_sect(n) )
-            xhi = alog( dhi_sect(n) )
+            xlo = log( dlo_sect(n) )
+            xhi = log( dhi_sect(n) )
             tlo = (xlo - x0)/sxroot2
             thi = (xhi - x0)/sxroot2
             if (tlo .le. 0.) then
